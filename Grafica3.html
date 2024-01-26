@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Scacchiera</title>
+  <style>
+    #scacchiera {
+      line-height: 0;
+    }
+    .white, .black{
+      width: 70px;
+      height: 70px;
+      border: 1px solid black;
+      display: inline-block;
+    }
+    .black {
+      background-color: black;
+    }
+  </style>
+</head>
+
+<body>
+  <!--
+  creare una scacchiera da scacchi
+  -->
+  <div id="scacchiera"></div>
+  <script>
+    function scacchiera() {
+      for (let i = 0; i < 8; i++) {
+        for (let j = 0; j < 4; j++) {
+          if(i%2==0){
+            document.getElementById("scacchiera").innerHTML += "<div class='white'></div>"+"<div class='black'></div>";             
+          }else{
+             document.getElementById("scacchiera").innerHTML += "<div class='black'></div>"+"<div class='white'></div>";           
+        }
+       }
+       document.getElementById("scacchiera").innerHTML += "<br>"
+      }
+    }
+    scacchiera();
+  </script>
+</body>
+
+</html>
