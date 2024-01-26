@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Es grafica2 </title>
+  <style>
+    .div{
+      background-color: blue;
+      width: 10px;
+      height: 10px;
+      border: 1px solid black;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="numero" id="numero">
+  <button onclick=createDiv()>Invia</button>
+  <div id="quadrati"></div>
+  <script>
+    function createDiv(){
+      let n = document.getElementById("numero").value;
+      for(let i=0; i<n; i++){
+        document.getElementById("quadrati").innerHTML += "<div class='div'></div>";
+      }
+    }
+  </script>
+</body>
+
+</html>
