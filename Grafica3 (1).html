@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Grafica 3</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+<style>
+
+#Tabella{
+  margin: 200px;
+  padding: 0px;
+  width : 200px ;
+  height : 200x;
+  border: 1px solid black;
+}
+.pari{
+  padding: 4px;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 1px solid black;
+  background-color: #a6a6a6;
+}
+  .dispari{
+    padding: 4px;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border: 1px solid black;
+    background-color: #545453;
+  }
+  
+
+
+
+
+  
+</style>
+
+
+</head>
+
+<body>
+<p>Ora stamperemo 100 quadrati grigi, ogni 10 si va a capo</p>
+<div id="Tabella">
+
+  
+  
+</div>
+
+<script>
+let Grafica = document.getElementById("Tabella");
+let quadratiHTML= " ";
+  for(let i=0;i<100;i++){
+    if(i%10==0){
+      quadratiHTML += "<br>";
+    }
+    if(i%2==0){
+      quadratiHTML += '<div class="pari"></div>';
+    }
+    else{
+      quadratiHTML += '<div class="dispari"></div>';
+    }
+    Grafica.innerHTML = quadratiHTML;
+
+  }
+
+
+
+
+
+    
+</script>
+</body>
+
+</html>
