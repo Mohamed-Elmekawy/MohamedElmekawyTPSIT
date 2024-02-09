@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Es 1 </title>
+  <style>
+    .div{
+      background-color: blue;
+      width: 10px;
+      height: 10px;
+      border: 1px solid black;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="number" id="number">
+  <button onclick="calcolopeso()">Invia</button>
+  <div id="pianeti"></div>
+  <script>
+
+
+    function calcolopeso(){
+    let n = document.getElementById("number").value;
+    let mercurio=3.60*n;
+    let terra=9.81*n;
+    let venere=8.84*n;
+    let marte=3.72*n;
+    let giove=24.87*n;
+    let saturno=10.41*n;
+    let urano=10.04*n;
+    let nettuno=12.92*n;
+    let plutone=2.26*n;
+    document.getElementById("pianeti").innerHTML+="il peso su Mercurio: "+mercurio+"<br>";
+    document.getElementById("pianeti").innerHTML+="il peso sulla Terra: "+terra+"<br>";
+    document.getElementById("pianeti").innerHTML+="il peso su Venere"+venere+"<br>";
+    document.getElementById("pianeti").innerHTML+="il peso su Marte"+marte+"<br>";
+    document.getElementById("pianeti").innerHTML+="il peso su Giove: "+giove+"<br>";
+    document.getElementById("pianeti").innerHTML+="il peso su Satturno"+saturno+"<br>";
+    document.getElementById("pianeti").innerHTML+="il peso su Urano"+urano+"<br>";
+    document.getElementById("pianeti").innerHTML+="il peso su Nettuno"+nettuno+"<br>";
+    document.getElementById("pianeti").innerHTML+="il peso su plutone"+plutone+"<br>";
+    }
+  </script>
+</body>
+
+</html>
