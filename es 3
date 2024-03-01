@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calcolo Area Cerchio</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f4f4f4;
+    }
+    #container {
+        text-align: center;
+    }
+    button {
+        padding: 10px 20px;
+        margin-top: 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
+</head>
+<body>
+<div id="container">
+    <h2>Calcolo Area Cerchio</h2>
+    <label for="raggio">Inserisci il raggio del cerchio:</label>
+    <input type="number" id="raggio" placeholder="Raggio">
+    <button onclick="calcolaArea()">Calcola Area</button>
+    <div id="risultato"></div>
+</div>
+
+<script>
+function calcolaArea() {
+    var raggio = document.getElementById('raggio').value;
+    var area = Math.PI * raggio * raggio;
+    document.getElementById('risultato').innerHTML = 'L\'area del cerchio è: ' + area.toFixed(2) + ' unità di superficie.';
+    document.getElementById('risultato').innerHTML += '<button onclick="stampareQuadrato()">Stampa quadrato</button>';
+}
+
+function stampareQuadrato() {
+    var nuovaFinestra = window.open('', '', 'width=200,height=200');
+    nuovaFinestra.document.open();
+    nuovaFinestra.document.write('<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Quadrato</title><style>body {margin: 0;padding: 0;display: flex;justify-content: center;align-items: center;height: 100vh;background-color: #f4f4f4;}div {width: 20px;height: 20px;background-color: #007bff;}</style></head><body><div></div></body></html>');
+    nuovaFinestra.document.close();
+}
+</script>
+</body>
+</html>
