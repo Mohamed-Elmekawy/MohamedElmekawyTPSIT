@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: #4CAF50; /* Colore di sfondo verde */
+    }
+
+    #Giocatori {
+      display: flex;
+      align-items: center; /* Allinea i bottoni orizzontalmente */
+      margin-bottom: 20px;
+    }
+
+    .campo {
+      position: relative;
+      width: 400px; /* Larghezza del campo */
+      height: 400px; /* Altezza del campo */
+      background-color: #1a9641; /* Colore del prato */
+      border: 10px solid #fff; /* Bordo bianco */
+      border-radius: 10px; /* Bordo arrotondato */
+    }
+
+    .centrocampo {
+      position: absolute;
+      width: 100px; /* Diametro del cerchio */
+      height: 100px; /* Diametro del cerchio */
+      background-color: #fff; /* Colore del cerchio */
+      border-radius: 50%; /* Cerchio */
+      top: 50%; /* Posiziona il cerchio al centro verticale del campo */
+      left: 50%; /* Posiziona il cerchio al centro orizzontale del campo */
+      transform: translate(-50%, -50%);
+    }
+
+    #timer-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    #start-btn,
+    #Player1,
+    #Ronaldo {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 5px; /* Aggiunto margine tra i bottoni */
+    }
+
+    #movingImage img {
+      width: 60px;
+      height: 60px;
+      position: absolute; /* Assicurati che l'immagine sia posizionata in modo assoluto */
+      top: 0%; /* Posiziona l'immagine sopra il campo */
+      left: 50%; /* Centra l'immagine orizzontalmente */
+      transform: translateX(-50%); /* Corregge la centratura orizzontale */
+      border-radius: 40px;
+    }
+
+  </style>
+  <title>Campo da Calcio con Timer</title>
+</head>
+<body>
+  <!-- Sezione per i giocatori e il conteggio dei clic -->
+
+<div id="Giocatori">
+   <!-- Player1 bottone con onClick per contare i clic -->
+  <button id="Player1" onclick="moveImage('up'); countClick('Player1')">Player1</button>
+  <!-- Elemento per visualizzare il conteggio dei clic di Player1 -->
+  <div id="Player1Count">Player1: 0 clic</div>
+  <!-- Ronaldo bottone con onClick per contare i clic -->
+  <button id="Ronaldo" onclick="moveImage('random'); countClick('Ronaldo')">Player2</button>
+   <!-- Elemento per visualizzare il conteggio dei clic di Ronaldo -->
+  <div id="RonaldoCount">Player2
+    : 0 clic</div>
+</div>
+  <!-- Campo da calcio con l'immagine mobile -->
+<div class="campo">
+  <div class="centrocampo"></div>
+  <div id="movingImage">
+    <img src="23c29a494f4d88e28d65f04435b1797f.jpg" alt="Moving Image">
+  </div>
+</div>
+
+<!-- Contatore del timer -->
+<div id="timer-container">
+<!-- Bottone per avviare il timer -->
+  <button id="start-btn" onclick="startTimer()">Start</button>
+<!-- Elemento per visualizzare il timer -->
+  <div id="timer">60</div>
+</div>
+
+<script>
+  let timer;
+  let imageStep = 10;
+  let player1Count = 0;
+  let ronaldoCount = 0;
+  // Funzione per avviare il timer
+  function startTimer() {
+    let seconds = 60;
+    updateTimerDisplay(seconds);
+
+    timer = setInterval(function () {
+      seconds--;
+
+      if (seconds < 0) {
+        clearInterval(timer);
+        determineWinner();
+      } else {
+        updateTimerDisplay(seconds);
+      }
+    }, 1000);
+  }
+   // Funzione per aggiornare la visualizzazione del timer
+  function updateTimerDisplay(seconds) {
+    document.getElementById("timer").textContent = seconds;
+  }
+
+  const movingImage = document.getElementById('movingImage');
+  // Funzione per muovere l'immagine
+  function moveImage(direction) {
+    let currentTop = parseInt(getComputedStyle(movingImage).top) || 0;
+
+    switch (direction) {
+      case 'up':
+        movingImage.style.top = `${currentTop - imageStep}px`;
+        break;
+      case 'random':
+        randomMove();
+        break;
+      default:
+        break;
+    }
+  }
+
+  function randomMove() {
+    let randomDirection = Math.random() < 0.5 ? 'up' : 'down';
+    moveImage(randomDirection);
+  }
+
+  function countClick(player) {
+    if (player === 'Player1') {
+      player1Count++;
+      document.getElementById('Player1Count').textContent = `Player1: ${player1Count} clic`;
+    } else if (player === 'Ronaldo') {
+      ronaldoCount++;
+      document.getElementById('RonaldoCount').textContent = `Ronaldo: ${ronaldoCount} clic`;
+    }
+  }
+  // Funzione per determinare il vincitore
+  function determineWinner() {
+    if (player1Count > ronaldoCount) {
+      alert("Player1 vince!");
+    } else if (ronaldoCount > player1Count) {
+      alert("Ronaldo vince!");
+    } else {
+      alert("Nessun vincitore, pareggio!");
+    }
+  }
+</script>
+
+</body>
+</html>
