@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Esercizo BAo</title>
+  <style>
+
+    body {
+      font-family: Montserrat;
+      text-align: center;
+      margin: 50px;
+    font-size: 30px;
+
+    }
+
+    button {
+      font-size: 30px;
+      margin: 10px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    #output {
+      margin-top: 20px;
+      font-size: 50px;
+    }
+
+  </style>
+  </head>
+  <body>
+
+<h1>Benvenuto nel Bar</h1>
+
+  <p id="array"></p>
+  <button onclick="Conta()">Conta tutti gli elementi</button>
+  <p id="out1"></p>
+  <button onclick="Aggiungi()">add Drink</button>
+  <p></p>
+  <button onclick="Elimina()">delete Drink</button>
+  <p></p>
+  <button onclick="Acquista()">buy Drink</button>
+  <p id="out2"></p>
+
+<script>
+
+  let Drink = ["Mojito", "Coca", "Fanta", "Sprite", "Acqua"];
+  let ordini = [];
+  mostra();
+  function mostra(){
+    document.getElementById("array").innerHTML = "Drink: " + Drink.join(", ");		
+  }
+  function Conta(){
+    document.getElementById("out1").innerHTML = "Sono presenti " + Drink.length + " Drink";
+  }
+  function Aggiungi(){
+    bevanda = prompt("Aggiungi un Drink: ");
+    Drink.push(bevanda);
+    mostra();
+  }
+  function Elimina(){
+    Drink.pop();
+    mostra();
+  }
+  function Acquista(){
+    let ordine = prompt("Inserisci il numero del Drink che vuoi bere");
+    ordini.push(Drink.at(ordine-1));
+    document.getElementById("out2").innerHTML = "Ordine: " + ordini.join(", ");
+  }
+
+</script>
+</body>
+</html>
