@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generatore di Frasi Casuali</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      padding-top: 50px;
+    }
+    .container {
+      max-width: 600px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center mb-4">Benvenuto nel generatore di Frasi Casuali</h1>
+    <div class="row mb-3">
+      <div class="col">
+        <button id="generateBtn" class="btn btn-primary w-100">Genera Frase Casuale</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p id="output" class="lead text-center">Clicca sul pulsante per generare una frase simpatica casuale.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Array di soggetti, verbi, complementi oggetti e aggettivi
+    const soggetti = ["Ronaldo", "Neymar", "Suarez", "Allegri", "Baggio", "Nunez", "Messi", "Salah", "Il calciatore", "il portiere"];
+    const verbi = ["ha noia", "salta", "gioca", "ride", "urla", "muove", "balla", "studia", "calcia", "ascolta"];
+    const complementiOggetti = ["la banana", "il muscolo", "il pallone", "il vino", "il calcio", "il pc", "manubri", "il biglietto", "la pizza", "il mare"];
+    const aggettivi = ["forte", "enorme", "debole", "veloce", "lento", "magro", "anziano", "giovane", "scarso", "stupido"];
+
+    // Funzione per generare una frase casuale
+    function generaFraseCasuale() {
+      const soggetto = soggetti[Math.floor(Math.random() * soggetti.length)];
+      const verbo = verbi[Math.floor(Math.random() * verbi.length)];
+      const complementoOggetto = complementiOggetti[Math.floor(Math.random() * complementiOggetti.length)];
+      const aggettivo = aggettivi[Math.floor(Math.random() * aggettivi.length)];
+
+      const fraseCasuale = soggetto + " " + verbo + " " + complementoOggetto + " " + aggettivo;
+      const output = document.getElementById('output');
+      output.textContent = fraseCasuale;
+    }
+
+    // Gestore per il click del pulsante di generazione frase casuale
+    document.getElementById('generateBtn').addEventListener('click', function() {
+      generaFraseCasuale();
+    });
+  </script>
+</body>
+</html>
+
