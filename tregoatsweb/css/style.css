@@ -1,0 +1,17 @@
+body {
+   margin-top:100px;
+}
+
+.navbar-brand,
+.navbar-nav > li > a {
+   height:80px;
+   line-height:50px;
+}
+
+container {
+   margin-top:100px;
+}
+
+tab-pabe {
+   min-height:300px;
+}
