@@ -1,0 +1,42 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Div con numeri casuali</title>
+<style>
+.quadrato {
+width: 20px;
+height: 20px;
+border: 1px solid black; margin: 5px;
+padding: 5px; }
+.pink { background-color: pink; }
+.blue {
+background-color: lightblue; }
+.green {
+background-color: lightgreen;
+
+ }
+</style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+// Creiamo un array per contenere i numeri casuali let numeriCasuali = [];
+// Generiamo 100 numeri casuali e li inseriamo nell'array for (let i = 0; i < 100; i++) { numeriCasuali.push(Math.floor(Math.random() * 100) + 1); }
+// Creiamo i div utilizzando i numeri nell'array for (let i = 0; i < numeriCasuali.length; i++) { let numero = numeriCasuali[i];
+// Controlliamo se il numero è pari
+if (numero % 2 === 0) {
+// Se è pari, assegniamo il colore pink
+document.getElementById('container').innerHTML += "<div class='quadrato pink'>" + numero + "</div>";
+} else {
+// Altrimenti, controlliamo se è multiplo di 3 o 5
+if (numero % 3 === 0 || numero % 5 === 0) {
+// Se è multiplo di 3 o 5, assegniamo il colore green
+
+ document.getElementById('container').innerHTML += "<div class='quadrato green'>" + numero + "</div>";
+} else {
+// Altrimenti, assegniamo il colore blue
+document.getElementById('container').innerHTML += "<div class='quadrato blue'>" + numero + "</div>";
+}
+}
+} </script> </body> </html>
