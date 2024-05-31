@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas con Punti e Numeri Primi</title>
+    <style>
+        canvas {
+            display: block;
+            margin: 20px auto;
+            border: 1px solid #d3d3d3;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Canvas 1: 100 punti consecutivi -->
+    <h2>Canvas con 100 punti consecutivi (10 per riga)</h2>
+    <canvas id="canvas1" width="200" height="200"></canvas>
+
+    <!-- Canvas 2: 1000 punti neri e rossi se associati a numeri primi -->
+    <h2>Canvas con 1000 punti neri e rossi se associati a numeri primi</h2>
+    <canvas id="canvas2" width="400" height="400"></canvas>
+
+    <!-- Canvas 3: 10000 punti di numeri primi neri e numeri non primi non stampati -->
+    <h2>Canvas con 10000 punti di numeri primi neri e numeri non primi non stampati</h2>
+    <canvas id="canvas3" width="1100" height="1100"></canvas>
+
+    <script>
+        // Script per Canvas 1
+        var c1 = document.getElementById("canvas1");
+        var ctx1 = c1.getContext("2d");
+        var size1 = 20; // Distanza tra i punti
+        for (let i = 0; i < 10; i++) {
+            for (let j = 0; j < 10; j++) {
+                ctx1.beginPath();
+                ctx1.arc(j * size1, i * size1, 2, 0, 2 * Math.PI);
+                ctx1.fillStyle = 'black';
+                ctx1.fill();
+            }
+        }
+
+        // Script per Canvas 2
+        var c2 = document.getElementById("canvas2");
+        var ctx2 = c2.getContext("2d");
+        var size2 = 20; // Distanza tra i punti
+        function isPrime(num) {
+            if (num <= 1) return false;
+            if (num <= 3) return true;
+            if (num % 2 === 0 || num % 3 === 0) return false;
+            for (let i = 5; i * i <= num; i += 6) {
+                if (num % i === 0 || num % (i + 2) === 0) return false;
+            }
+            return true;
+        }
+        for (let i = 0; i < 25; i++) {
+            for (let j = 0; j < 40; j++) {
+                let num = i * 40 + j;
+                ctx2.beginPath();
+                ctx2.arc(j * size2 / 2, i * size2 / 2, 2, 0, 2 * Math.PI);
+                ctx2.fillStyle = isPrime(num) ? 'red' : 'black';
+                ctx2.fill();
+            }
+        }
+
+        // Script per Canvas 3
+        var c3 = document.getElementById("canvas3");
+        var ctx3 = c3.getContext("2d");
+        var size3 = 10; // Distanza tra i punti
+        for (let i = 0; i < 100; i++) {
+            for (let j = 0; j < 100; j++) {
+                let num = i * 100 + j;
+                if (isPrime(num)) {
+                    ctx3.beginPath();
+                    ctx3.arc(j * size3, i * size3, 2, 0, 2 * Math.PI);
+                    ctx3.fillStyle = 'black';
+                    ctx3.fill();
+                }
+            }
+        }
