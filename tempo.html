@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temporizzatore e Numeri Casuali</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gioco dei Numeri Casuali</h1>
+    <div id="countdown"></div>
+    <div id="output"></div>
+    <input type="number" id="guess" min="0" max="10" placeholder="Indovina un numero">
+    <button id="submit">Invia</button>
+    <div id="score">Punteggio: 0</div>
+
+    <script>
+        let score = 0;
+        let intervalId;
+
+        function countdown(seconds) {
+            const countdownDiv = document.getElementById("countdown");
+            countdownDiv.innerHTML = seconds;
+
+            if (seconds > 0) {
+                setTimeout(() => countdown(seconds - 1), 1000);
+            } else {
+                countdownDiv.innerHTML = "Inizio!";
+                startGame();
+            }
+        }
+
+        function startGame() {
+            intervalId = setInterval(generateRandomNumbers, 5000);
+            generateRandomNumbers();
+        }
+
+        function generateRandomNumbers() {
+            const numbers = [];
+            while (numbers.length < 10) {
+                const num = Math.floor(Math.random() * 11);
+                if (!numbers.includes(num)) {
+                    numbers.push(num);
+                }
+            }
+
+            document.getElementById("output").innerHTML = `Numeri estratti: ${numbers.join(', ')}`;
+            checkGuess(numbers);
+        }
+
+        function checkGuess(numbers) {
+            const guessInput = document.getElementById("guess");
+            const guessedNumber = parseInt(guessInput.value);
+
+            if (guessedNumber >= 0 && guessedNumber <= 10) {
+                if (!numbers.includes(guessedNumber)) {
+                    score++;
+                    document.getElementById("score").innerHTML = `Punteggio: ${score}`;
+                    alert(`Hai indovinato! Il numero ${guessedNumber} non è stato estratto.`);
+                } else {
+                    alert(`Sbagliato! Il numero ${guessedNumber} è stato estratto.`);
+                }
+            } else {
+                alert("Inserisci un numero valido tra 0 e 10.");
+            }
+
+            guessInput.value = '';
+        }
+
+        document.getElementById("submit").addEventListener("click", () => {
+            generateRandomNumbers();
+        });
+
+        countdown(3);
+    </script>
+</body>
+</html>
