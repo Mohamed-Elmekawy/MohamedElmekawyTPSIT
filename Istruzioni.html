@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body {
+
+            background-color: #000000;
+            background-image: url('./img/sfondo.png');
+        }
+
+        .navbar {
+            background-color: #9AF91E;
+        }
+
+        .navbar .navbar-nav .nav-link {
+            color: #000000;
+        }
+
+        .navbar-toggler {
+            border: none;
+        }
+
+        .navbar-toggler:focus, .btn-close:focus {
+            box-shadow: none;
+            outline: none;
+        }
+
+        .dropdown-menu {
+            background-color: rgb(58, 55, 55);
+        }
+.img{
+    color:white;
+    width: 200px;
+    height: auto;
+}
+
+
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar fixed-top navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="./gioco15.html">Chess Magic Puzzle</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="Istruzioni.html">Istruzioni</a>
+                    </li>
+
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="container text-center" style="color:white; margin-top: 100px;">
+            <div class="row">
+                <div class="col-12 col-sm-6">
+                    <h1>Obiettivo</h1>
+                    <li >l'obiettivo è quello di spostare i pezzi e far arrivare la torre nella casella verde</li>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <img class="img" src="img/Screenshot 2024-11-20 213241.png">
+                </div>
+            </div>
+        
+            <div class="row my-5">
+                <div class="col-12 col-sm-6 order-2 order-sm-1">
+                    <img class="img" src="img/alfiere.jpg">
+                </div>
+                <div class="col-12 col-sm-6 order-1 order-sm-2">
+                    <h1>Alfiere</h1>
+                    <ul>
+                        <li>Movimento in diagonale: Può muoversi in avanti, indietro, verso sinistra o destra, purché il movimento avvenga in diagonale.</li><br>
+                        <li>Nessuna limitazione di distanza: Può muoversi per un numero illimitato di caselle finché non incontra un altro pezzo.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="row my-5">
+                <div class="col-12 col-sm-6 order-2 order-sm-1">
+                    <img class="img" src="img/Screenshot 2024-11-20 215645.png">
+                </div>
+                <div class="col-12 col-sm-6 order-1 order-sm-2">
+                    <h1>Cavallo</h1>
+                    <ul>
+                        <li>Movimento a L: Può muoversi di due caselle in una direzione (orizzontale o verticale) e poi una casella perpendicolare, o viceversa.</li><br>
+                        <li>Puo' saltare sopra altri pezzi: è l'unico pezzo che può passare sopra altri pezzi durante il suo movimento.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="row my-5">
+                <div class="col-12 col-sm-6 order-2 order-sm-1">
+                    <img class="img" src="./img/pedone.png">
+                </div>
+                <div class="col-12 col-sm-6 order-1 order-sm-2">
+                    <h1>Pedone</h1>
+                    <ul>
+                        <li>Movimento in avanti: Si muove di una casella in avanti, ma alla prima mossa può avanzare di due caselle.</li>
+                       
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="row my-5">
+                <div class="col-12 col-sm-6 order-2 order-sm-1">
+                    <img class="img" src="./img/Screenshot 2024-11-20 215923.png">
+                </div>
+                <div class="col-12 col-sm-6 order-1 order-sm-2">
+                    <h1>Torre</h1>
+                    <ul>
+                        <li>Movimento orizzontale e verticale: Può muoversi in avanti, indietro, a sinistra e a destra per un numero illimitato di caselle.</li>
+                     
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="row my-5">
+                <div class="col-12 col-sm-6 order-2 order-sm-1">
+                    <img class="img" src="./bottoni.png">
+                </div>
+                <div class="col-12 col-sm-6 order-1 order-sm-2">
+                    <h1>Bottoni</h1>
+                    <ul>
+                        <li>Bottone Indietro :permette di ritornare indietro con le mosse</li>
+                        <li>Bottone Timer :permette di ritornare istanziare un timer </li>
+                     
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+
+
+
+
+</body>
+</html>
