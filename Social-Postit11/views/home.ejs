@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Impostazioni del set di caratteri e della viewport per una corretta visualizzazione su tutti i dispositivi -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postit - Social</title>
+
+    <!-- Collegamento al file CSS di Bootstrap 5 per lo stile -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* Stile per ogni singolo post */
+        .post {
+            background-color: #f8f9fa; /* Colore di sfondo chiaro per ogni post */
+            border-radius: 8px; /* Angoli arrotondati */
+            padding: 20px; /* Padding interno per il post */
+            margin-bottom: 20px; /* Spazio tra i post */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombra leggera attorno al post */
+        }
+        /* Impostazioni per il paragrafo all'interno di un post */
+        .post p {
+            margin: 0; /* Rimuove i margini per il paragrafo */
+        }
+        /* Stile per le informazioni del post (data e autore) */
+        .post-meta {
+            font-size: 0.9rem; /* Dimensione del font per le informazioni del post */
+            color: #6c757d; /* Colore grigio per il testo del meta */
+        }
+        /* Stile per il contenuto del post (dopo le informazioni) */
+        .post-content {
+            margin-top: 10px; /* Aggiunge spazio sopra il contenuto del post */
+        }
+        /* Stile per la navbar */
+        .navbar {
+            border-bottom: 2px solid #e0e0e0; /* Linea sottile sotto la navbar */
+        }
+        /* Stile per il footer della pagina */
+        footer {
+            background-color: #f8f9fa; /* Colore di sfondo chiaro per il footer */
+            color: #6c757d; /* Colore del testo grigio */
+        }
+        /* Stile per il link nel footer */
+        .footer-link {
+            text-decoration: none; /* Rimuove la sottolineatura dal link */
+            color: #6c757d; /* Colore grigio per il link */
+        }
+        /* Stile per il background della pagina */
+        body {
+            background-image: url('https://img.freepik.com/psd-gratis/background-delle-vendite-sui-social-media_23-2151465324.jpg'); /* Immagine di sfondo */
+            background-size: cover; /* Assicura che l'immagine copra tutta l'area della pagina */
+            background-position: center; /* Centra l'immagine di sfondo */
+            background-attachment: fixed; /* Fissa l'immagine durante lo scrolling */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar: Barra di navigazione in cima alla pagina -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <!-- Logo e link alla homepage -->
+            <a class="navbar-brand" href="/">Postit</a>
+            <!-- Bottone per la navigazione mobile (quando la finestra è ridotta) -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Elenco dei link di navigazione -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <!-- Link per la pagina di login -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <!-- Link per la pagina di registrazione -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/register">Sign Up</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenuto principale della pagina -->
+    <div class="container my-4">
+        <!-- Messaggio di benvenuto, mostra il nome utente se loggato -->
+        <h2>Welcome, <%= user ? user.username : 'Guest' %>!</h2>
+        <!-- Se l'utente è loggato, può scrivere un post -->
+        <% if (user) { %>
+        <form action="/addPost" method="POST" class="my-4">
+            <div class="mb-3">
+                <!-- Area di testo per scrivere il contenuto del post -->
+                <textarea name="content" class="form-control" rows="3" placeholder="Write a post..."></textarea>
+            </div>
+            <!-- Bottone per inviare il post -->
+            <button type="submit" class="btn btn-primary">Post</button>
+        </form>
+        <% } else { %>
+        <!-- Se l'utente non è loggato, visualizza un messaggio con il link per il login -->
+        <p>Please <a href="/login" class="footer-link">login</a> to post something.</p>
+        <% } %>
+        
+        <!-- Sezione per visualizzare i post recenti -->
+        <div class="my-4">
+            <h3>Recent Posts</h3>
+            <!-- Ciclo per visualizzare ogni post -->
+            <% posts.forEach(function(post) { %>
+            <div class="post">
+                <!-- Visualizza autore e data del post -->
+                <p class="post-meta"><strong><%= post.username %></strong></p>
+                <div class="post-content">
+                    <!-- Contenuto del post -->
+                    <p><%= post.content %></p>
+                </div>
+            </div>
+            <!-- Separatore tra i post -->
+            <hr>
+            <% }); %>
+        </div>
+    </div>
+
+    <!-- Footer della pagina -->
+    <footer class="text-center py-3">
+        <p>&copy; 2025 Postit | <a href="/privacy-policy" class="footer-link">Elaborata da Elmekawy Mohamed</a></p>
+    </footer>
+
+    <!-- Inclusione di Bootstrap JS per funzionalità interattive -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
