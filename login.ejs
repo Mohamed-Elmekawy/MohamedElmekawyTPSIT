@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Impostazioni del set di caratteri e della viewport per una corretta visualizzazione su tutti i dispositivi -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Postit</title>
+
+    <!-- Collegamento al file CSS di Bootstrap 5 per lo stile -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* Stile globale per la pagina */
+        body {
+            background-color: #f8f9fa; /* Colore di sfondo grigio chiaro */
+        }
+
+        /* Stile per il contenitore del modulo */
+        .form-container {
+            margin-top: 50px; /* Distanza dalla parte superiore della pagina */
+        }
+
+        /* Stile per la card che contiene il modulo di login */
+        .form-card {
+            background-color: white; /* Sfondo bianco per la card */
+            border-radius: 10px; /* Angoli arrotondati */
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1); /* Ombra leggera attorno alla card */
+            padding: 30px; /* Padding interno della card */
+        }
+
+        /* Stile personalizzato per i bottoni */
+        .btn-custom {
+            background-color: #007bff; /* Colore di sfondo blu per il bottone */
+            color: white; /* Colore del testo bianco */
+        }
+
+        /* Effetto hover per il bottone (quando il cursore passa sopra) */
+        .btn-custom:hover {
+            background-color: #0056b3; /* Colore di sfondo blu più scuro quando il cursore è sopra */
+        }
+
+        /* Stile per il footer */
+        footer {
+            background-color: #007bff; /* Colore di sfondo blu per il footer */
+            color: white; /* Colore del testo bianco */
+            padding: 15px 0; /* Padding verticale per il footer */
+            text-align: center; /* Allinea il testo al centro */
+            margin-top: 40px; /* Distanza sopra il footer */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Contenitore principale del modulo di login -->
+    <div class="container form-container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="form-card">
+                    <h2 class="text-center mb-4">Login</h2>
+                    <!-- Modulo di login -->
+                    <form action="/login" method="POST">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" name="username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-custom w-100">Login</button>
+                    </form>
+                    <!-- Link per la registrazione se l'utente non ha un account -->
+                    <p class="text-center mt-3">Non hai un account? <a href="/register" class="text-primary">Registrati qui</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer della pagina -->
+    <footer>
+        <p>&copy; 2025 Postit</p>
+    </footer>
+
+    <!-- Inclusione di Bootstrap JS per funzionalità interattive -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+
+
+
