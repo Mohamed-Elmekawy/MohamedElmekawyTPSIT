@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <title>Documentazione Tecnica — API REST "Sushi Master"</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; padding:0; line-height:1.6; }
+    .container { max-width: 900px; margin: auto; padding: 20px; }
+    h1,h2,h3 { margin-bottom: 10px; }
+    p { margin-bottom: 15px; }
+    .frontispiece { text-align:center; padding:80px 20px; border:1px solid #ccc; margin-top:40px; }
+    .logo { width:120px; height:120px; background:#eee; margin:auto; margin-bottom:20px; display:flex; align-items:center; justify-content:center; }
+    .meta { margin-top:20px; }
+    .meta div { margin:5px 0; }
+    .page-break { page-break-after: always; border-bottom:2px dashed #ccc; margin:40px 0; }
+    ul { margin-left:20px; }
+  </style>
+</head>
+<body>
+
+<!-- Frontespizio -->
+<div class="container frontispiece">
+  <img src="Logo-Maxwell-1060.png" class="logo">
+  <h1>Documentazione tecnica — API REST “Sushi Master”</h1>
+  <p>Materia prima, taglio e provenienza del pesce</p>
+  <div class="meta">
+    <div><strong>Cognome:</strong> Elmekawy</div>
+    <div><strong>Nome:</strong> Mohamed</div>
+    <div><strong>Classe:</strong> 5 B Info</div>
+    <div><strong>Anno scolastico:</strong> 2025/2026</div>
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- Abstract -->
+<div class="container">
+  <h2>Abstract (Italiano)</h2>
+  <p>
+    Questa documentazione analizza la progettazione teorica di una API REST denominata “Sushi Master”, focalizzata sulla materia prima del pesce,
+    le tecniche di taglio e la provenienza. L’obiettivo è definire un modello informativo accurato per classificare i tipi di pesce, i metodi di
+    cattura, le zone FAO di pesca e le preparazioni culinarie (nigiri e sashimi), con particolare attenzione alla tracciabilità e alla qualità.
+  </p>
+  <p>
+    La distinzione tra pesce fresco e abbattuto, insieme alla descrizione della filiera, consente di valorizzare gli standard di sicurezza e di
+    cultura gastronomica. La API espone risorse chiave e favorisce collegamenti semantici tra ingredienti, tecniche e territori. Il riso (varietà,
+    come Koshihikari, e l’aceto impiegato) viene trattato come componente critico per la resa.
+  </p>
+  <p>
+    Il design copre convenzioni REST, modellazione delle risorse, criteri di versionamento, filtri, paginazione e gestione degli errori, evitando
+    deliberatamente il codice implementativo in questa prima consegna. La provenienza geografica (es. FAO 37 — Mediterraneo) e i profili di
+    sostenibilità dei metodi di pesca si integrano in un framework di metadati che abilita uso didattico e professionale.
+  </p>
+  <p>
+    L’API promuove trasparenza tramite attributi normalizzati, tassonomie coerenti e riferimenti alla qualità del taglio (ventresca/otoro,
+    dorso/akami). La coerenza dei dati facilita valutazioni organolettiche e standard operativi in cucina. La documentazione definisce
+    vocabolari, esempi di relazioni e regole di validazione, predisponendo estensioni future senza rompere la compatibilità.
+  </p>
+  <p>
+    La parte teorica include principi di progettazione, criteri di naming, strategia di error handling e linee guida per l’osservabilità (log,
+    audit, correlazione). In prospettiva, la API potrà supportare controlli anti-frode e benchmarking di qualità. Questo abstract delinea gli
+    elementi essenziali per un’esposizione chiara, affidabile e didatticamente utile.
+  </p>
+
+  <h2>Abstract (English)</h2>
+  <p>
+    This document explores the theoretical design of a REST API named “Sushi Master”, centered on fish as the primary ingredient, cutting
+    techniques, and provenance. The goal is to define a precise information model to classify fish types, catch methods, FAO fishing regions,
+    and culinary preparations (nigiri and sashimi), with emphasis on traceability and quality.
+  </p>
+  <p>
+    The distinction between fresh and frozen-at-core fish, alongside supply chain descriptions, highlights food safety standards and culinary
+    culture. The API exposes key resources and enables semantic links among ingredients, techniques, and territories. Rice (varieties such as
+    Koshihikari and the vinegar used) is treated as a critical component for performance.
+  </p>
+  <p>
+    The design covers REST conventions, resource modeling, versioning criteria, filtering, pagination, and error handling, intentionally
+    omitting implementation code at this stage. Geographic provenance (e.g., FAO 37 — Mediterranean) and the sustainability profiles of catch
+    methods are integrated into a metadata framework suitable for educational and professional use.
+  </p>
+  <p>
+    The API promotes transparency via normalized attributes, consistent taxonomies, and references to cutting quality (belly/otoro, back/akami).
+    Data consistency enables organoleptic assessments and operational kitchen standards. The documentation defines vocabularies, example
+    relationships, and validation rules, preparing future extensions without breaking compatibility.
+  </p>
+  <p>
+    The theoretical part includes design principles, naming criteria, error-handling strategy, and observability guidelines (logging, audit,
+    correlation). Looking ahead, the API may support anti-fraud checks and quality benchmarking. This abstract outlines the essentials for a
+    clear, reliable, and educationally valuable exposure.
+  </p>
+</div>
+
+
+<div class="page-break"></div>
+
+<!-- Indice -->
+<div class="container">
+  <h2>Indice</h2>
+  <h3>Parte I — Teoria e principi</h3>
+  <ul>
+    <li>Contesto e obiettivi</li>
+    <li>Ambito e scope dell’API</li>
+    <li>Risorse e dominio (cenni generali)</li>
+    <li>Provenienza e tracciabilità (approccio teorico)</li>
+    <li>Qualità del prodotto (linee guida)</li>
+    <li>Convenzioni REST e naming (principi)</li>
+    <li>Gestione degli errori (concetti)</li>
+    <li>Osservabilità e sicurezza (cenni)</li>
+  </ul>
+
+  <h3>Parte II — Specifiche concettuali</h3>
+  <ul>
+    <li>Attributi chiave (descrizione generale)</li>
+    <li>Relazioni tra risorse (approccio teorico)</li>
+    <li>Terminologia e vocabolario (cenni)</li>
+    <li>Casi d’uso (esempi didattici)</li>
+  </ul>
+</div>
+
+<div class="page-break"></div>
+
+<!-- Contenuto teorico -->
+<div class="container">
+  <h2>Contesto e obiettivi</h2>
+  <p>
+    L’API “Sushi Master” nasce con l’intento di fornire un modello teorico per la gestione di informazioni
+    legate alla materia prima del sushi: pesce, provenienza e tecniche di taglio. L’obiettivo è creare una
+    base concettuale che permetta di descrivere e classificare in modo uniforme le risorse fondamentali,
+    garantendo tracciabilità e coerenza dei dati.
+  </p>
+  <p>
+    Questo documento si concentra sulla fase di analisi e design teorico, senza includere codice o
+    implementazioni pratiche. La finalità è didattica e progettuale: fornire linee guida chiare per una
+    futura realizzazione dell’API, mantenendo un approccio orientato alla qualità, alla trasparenza e
+    alla sostenibilità.
+  </p>
+
+  <h2>Ambito e scope dell’API</h2>
+  <p>
+    L’API è pensata per descrivere e organizzare informazioni relative a:
+  </p>
+  <ul>
+    <li><strong>Tipi di pesce:</strong> classificazione delle specie e delle parti utilizzate.</li>
+    <li><strong>Metodi di cattura:</strong> approccio teorico ai diversi sistemi di pesca.</li>
+    <li><strong>Zone FAO:</strong> riferimento geografico standardizzato.</li>
+    <li><strong>Preparazioni:</strong> cenni su nigiri e sashimi come categorie principali.</li>
+    <li><strong>Chef:</strong> profili generici e ruolo nella filiera.</li>
+  </ul>
+  <p>
+    Non rientrano nello scope aspetti commerciali, gestionali o di pagamento. L’API si limita a fornire
+    un quadro teorico utile per studi, esercitazioni e futuri sviluppi pratici.
+  </p>
+
+  <h2>Risorse e dominio (cenni generali)</h2>
+  <p>
+    Le risorse vengono considerate come entità concettuali (pesce, metodi, regioni, piatti, chef) senza
+    definire endpoint o strutture di codice. L’approccio rimane volutamente vago per lasciare spazio
+    alla futura implementazione.
+  </p>
+
+  <h2>Provenienza e tracciabilità (approccio teorico)</h2>
+  <p>
+    Si sottolinea l’importanza della provenienza geografica e dello stato del pesce (fresco vs abbattuto),
+    ma senza entrare nei dettagli tecnici di gestione dei dati.
+  </p>
+
+  <h2>Qualità del prodotto (linee guida)</h2>
+  <p>
+    Cenni generali su taglio, varietà di riso e aceto, trattati come concetti teorici e non come
+    specifiche implementative.
+  </p>
+
+  <h2>Convenzioni REST e naming (principi)</h2>
+  <p>
+    Richiamo ai principi generali di coerenza e chiarezza, senza definire convenzioni di codice.
+  </p>
+
+  <h2>Gestione degli errori (concetti)</h2>
+  <p>
+    Approccio teorico alla necessità di gestire errori e validazioni, senza esempi pratici.
+  </p>
+
+  <h2>Osservabilità e sicurezza (cenni)</h2>
+  <p>
+    Linee guida generali su log, audit e sicurezza, trattate come concetti astratti.
+  </p>
+
+  <footer>
+    Prima consegna — Documento teorico. Nessun codice API incluso. Per l’implementazione verranno aggiunte sezioni dedicate.
+  </footer>
+</div>
+</body>
+</html>
