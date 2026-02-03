@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Postit - Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        body { background-color: #f0f2f5; font-family: sans-serif; }
+        .card { border: none; border-radius: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        #chat-window { height: 350px; overflow-y: auto; background: white; padding: 15px; display: flex; flex-direction: column; }
+        .chat-bubble { padding: 8px 12px; border-radius: 15px; background: #e4e6eb; margin-bottom: 8px; width: fit-content; max-width: 80%; word-wrap: break-word; }
+        .my-bubble { background: #0084ff; color: white; align-self: flex-end; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm mb-4">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/">POSTIT</a>
+            <div class="ms-auto">
+                <% if (user) { %>
+                    <span class="text-white me-3">@<%= user.username %></span>
+                    <a href="/logout" class="btn btn-light btn-sm">Esci</a>
+                <% } else { %>
+                    <a href="/login" class="btn btn-outline-light btn-sm me-2">Login</a>
+                    <a href="/register" class="btn btn-light btn-sm">Registrati</a>
+                <% } %>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <% if (user) { %>
+                <div class="card p-3 mb-4">
+                    <form action="/addPost" method="POST">
+                        <textarea name="content" class="form-control border-0 bg-light mb-2" rows="2" placeholder="Cosa stai pensando?" required></textarea>
+                        <button class="btn btn-primary btn-sm float-end">Pubblica</button>
+                    </form>
+                </div>
+                <% } %>
+
+                <% posts.reverse().forEach(post => { %>
+                <div class="card p-3 mb-3">
+                    <div class="d-flex justify-content-between">
+                        <span class="fw-bold text-primary"><%= post.username %></span>
+                        <% if (user && user.username === post.username) { %>
+                            <form action="/deletePost/<%= post.id %>" method="POST">
+                                <button class="btn btn-sm text-danger border-0 bg-transparent"><i class="bi bi-trash"></i></button>
+                            </form>
+                        <% } %>
+                    </div>
+                    <p class="my-2"><%= post.content %></p>
+                    <small class="text-muted"><%= new Date(post.date).toLocaleString() %></small>
+                </div>
+                <% }) %>
+            </div>
+
+            <div class="col-md-5">
+                <div class="card overflow-hidden">
+                    <div class="card-header bg-white fw-bold"><i class="bi bi-chat-dots"></i> Chat Live</div>
+                    <div id="chat-window"></div>
+                    <div class="card-footer bg-white border-0">
+                        <% if (user) { %>
+                            <div class="input-group">
+                                <input type="text" id="chat-input" class="form-control border-light bg-light" placeholder="Scrivi un messaggio...">
+                                <button id="send-btn" class="btn btn-primary"><i class="bi bi-send"></i></button>
+                            </div>
+                        <% } else { %>
+                            <p class="text-center small text-muted mb-0">Effettua il login per partecipare alla chat</p>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+        const win = document.getElementById('chat-window');
+        const inp = document.getElementById('chat-input');
+        const btn = document.getElementById('send-btn');
+        const me = "<%= user ? user.username : '' %>";
+
+        // Funzione per mostrare il messaggio nel box
+        function displayMsg(data) {
+            const div = document.createElement('div');
+            const isMe = (data.user === me);
+            div.className = `chat-bubble ${isMe ? 'my-bubble' : ''}`;
+            div.innerHTML = `<small class="d-block fw-bold" style="font-size: 0.7rem;">${data.user}</small>${data.text}`;
+            win.appendChild(div);
+            win.scrollTop = win.scrollHeight; // Scroll automatico in basso
+        }
+
+        // 1. CARICA STORICO: Quando ti connetti (o ricarichi), ricevi i messaggi dalla RAM
+        socket.on('load history', (history) => {
+            win.innerHTML = ''; // Pulisce il box prima di ricaricare
+            history.forEach(msg => displayMsg(msg));
+        });
+
+        // 2. NUOVI MESSAGGI: Ricevi i messaggi inviati mentre sei online
+        socket.on('chat message', (data) => {
+            displayMsg(data);
+        });
+
+        // Invio del messaggio
+        if(btn) {
+            const sendMessage = () => {
+                if(inp.value.trim()){
+                    socket.emit('chat message', { user: me, text: inp.value });
+                    inp.value = '';
+                }
+            };
+            btn.onclick = sendMessage;
+            inp.onkeypress = (e) => { if(e.key === 'Enter') sendMessage(); };
+        }
+    </script>
+</body>
+</html>
